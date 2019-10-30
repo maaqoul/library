@@ -1,27 +1,28 @@
 let myLibrary = [];
 
-function Book(title, author, numberOfPages) {
+function Book(title, author, numberOfPages, isRead) {
   // the constructor...
   this.title = title;
   this.author = author;
   this.numberOfPages = numberOfPages;
+  this.isRead = isRead;
 }
 
 function addBookToLibrary() {
-  console.log("i've been clicked");
   // do stuff here
-  let title = document.getElementById("title").value;
-  let author = document.getElementById("author").value;
-  let numberOfPages = document.getElementById("numberOfPages").value;
+  let form = document.getElementById("myForm");
+  const title = form.elements.namedItem("title").value.trim();
+  const author = form.elements.namedItem("author").value.trim();
+  const numberOfPages = form.elements.namedItem("numberOfPages").value.trim();
   const book = new Book(title, author, numberOfPages);
   myLibrary.push(book);
-  title = author = numberOfPages = " ";
-
   render();
+  form.reset();
 }
 
 const addButton = document.getElementById("add");
-addButton.addEventListener("click", () => {
+addButton.addEventListener("click", e => {
+  e.preventDefault();
   addBookToLibrary();
 });
 
@@ -32,11 +33,8 @@ function render() {
     const tr = document.createElement("tr");
     tbody.append(tr);
     addColumn(tr, book.title);
-    console.log("book.title : ", book.title);
     addColumn(tr, book.author);
-    console.log("book.author : ", book.author);
     addColumn(tr, book.numberOfPages);
-    console.log("book.numberOfPages : ", book.numberOfPages);
   }
 }
 
