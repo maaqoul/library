@@ -9,6 +9,7 @@
   <body>
     <h1>Library App</h1>
     <form id="myForm">
+      <input type="text" name="isbn" placeholder="isbn" id="isbn" />
       <input type="text" name="title" placeholder="title" id="title" />
       <input type="text" name="author" placeholder="author" id="author" />
       <input
@@ -22,9 +23,11 @@
 
     <table>
       <thead>
+        <td>isbn</td>
         <td>title</td>
         <td>author</td>
         <td>number of pages</td>
+        <td>actions</td>
       </thead>
       <tbody id="render"></tbody>
     </table>
